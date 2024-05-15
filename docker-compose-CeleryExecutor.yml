@@ -15,6 +15,15 @@ services:
         # volumes:
         #     - ./pgdata:/var/lib/postgresql/data/pgdata
 
+    database:
+        image: "postgres" 
+        env_file:
+            - database.env # configure postgres
+        #vovumes:
+        #   - database-data:/var/lib/postgres/data/ # presist data even if container shuts down
+        ports:
+            - "5423:5432"
+
     webserver:
         image: puckel/docker-airflow:1.10.9
         restart: always
